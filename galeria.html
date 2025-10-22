@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeria | Nyumba Food Concept</title>
+  <style>
+
+    <script src="script.js"></script>
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #fffbe6;
+      color: #262019;
+    }
+
+    header {
+      background-color: #4a2d1e;
+      background-image: url("images/friso1.png");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 160px;
+      width: 100%;
+      text-align: center;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+
+    #header-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 160px;
+      width: auto;
+      object-fit: contain;
+      z-index: 20;
+      margin-left: 10px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      margin: 0.5em 0 1em 0;
+    }
+
+    /* BOTÕES VERDES COM TEXTO LARANJA */
+    nav a {
+      display: inline-block;
+      margin: 0 1em;
+      padding: 0.45em 1.15em;
+      background: #008000;
+      color: #ff7c00;
+      font-size: 1.15em;
+      font-weight: 800;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      text-shadow: none;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.16);
+      transition: background 0.25s, transform 0.15s;
+    }
+    nav a:hover {
+      background: #006e00;
+      color: #ffa64d;
+      transform: scale(1.08);
+    }
+
+    .lang-selector {
+      margin-bottom: 0.8em;
+    }
+
+    .lang-selector button {
+      background: #000000;
+      border: none;
+      border-radius: 6px;
+      margin: 0 0.25em;
+      padding: 0.3em 1em;
+      font-weight: bold;
+      cursor: pointer;
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: background 0.25s, transform 0.15s;
+    }
+    .lang-selector button:hover {
+      background: #222;
+      transform: scale(1.05);
+    }
+
+    #date-time {
+      position: absolute;
+      top: 8px;
+      right: 20px;
+      color: #fffdf5;
+      font-size: 0.95em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.85);
+      font-weight: 500;
+    }
+
+    main {
+      position: relative;
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 2em;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    }
+
+    .page-title {
+      font-size: 2.8em;
+      margin-bottom: 1em;
+      text-transform: uppercase;
+      color: #4a2d1e;
+      font-weight: 900;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding-bottom: 20px;
+    }
+
+    .gallery-item {
+      background: #f7f7f7;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(255,124,0,0.35);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: filter 0.3s;
+    }
+    .gallery-item:hover img {
+      filter: brightness(1);
+    }
+
+    .image-caption {
+      padding: 15px;
+      text-align: center;
+      color: #262019;
+      width: 100%;
+    }
+    .image-caption strong {
+      color: #4a2d1e;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    #image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #enlarged-gallery-image {
+      max-width: 95%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 40px rgba(255,124,0,0.5);
+    }
+    #modal-caption {
+      color: #fff;
+      margin-top: 10px;
+      font-size: 1.1em;
+      text-shadow: 0 0 5px #000;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/logo-nyumba.png" alt="Logótipo Nyumba Food Concept" id="header-logo" />
+    <nav>
+      <a href="index.html" id="nav-home">Principal</a>
+      <a href="galeria.html" id="nav-gallery">Galeria</a>
+      <a href="menu.html" id="nav-menu">Menu</a>
+      <a href="contactos.html" id="nav-contact">Contactos</a>
+    </nav>
+    <div class="lang-selector">
+      <button onclick="setLang('pt')">Português</button>
+      <button onclick="setLang('en')">English</button>
+    </div>
+    <div id="date-time"></div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Venha Conhecer-nos</h1>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/es1.jpg" alt="Esplanada Nyumba" onclick="openImage('images/es1.jpg', 'A nossa esplanada ao pôr-do-sol');">
+        <div class="image-caption"><strong>Esplanada</strong>O ambiente acolhedor e tranquilo no coração do parque.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/pc1.jpg" alt="Pratos do Chefe" onclick="openImage('images/pc1.jpg', 'Pratos do Chef Nyumba');">
+        <div class="image-caption"><strong>Pratos do Chefe</strong>As nossas criações exclusivas e deliciosas.</div>
+      </div>
+    </div>
+  </main>
+
+  <div id="image-modal" onclick="closeImage()">
+    <img id="enlarged-gallery-image" src="" alt="Imagem ampliada">
+    <p id="modal-caption"></p>
+  </div>
+
+  <script>
+    function openImage(src, caption) {
+      const modal = document.getElementById('image-modal');
+      const img = document.getElementById('enlarged-gallery-image');
+      const text = document.getElementById('modal-caption');
+      img.src = src;
+      text.innerText = caption;
+      modal.style.display = 'flex';
+    }
+    function closeImage() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeImage(); });
+    function updateDateTime(){
+      const now=new Date();
+      const date=now.toLocaleDateString('pt-PT',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+      const time=now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+      document.getElementById('date-time').textContent=`${date} | ${time}`;
+    }
+    window.onload=updateDateTime;
+    setInterval(updateDateTime,60000);
+  </script>
+</body>
+</html>
