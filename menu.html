@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nyumba Food Concept | Menu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(180deg, #fffdf6 0%, #fff9e9 100%);
+      color: #262019;
+    }
+    header {
+      background-color: #4a2d1e;
+      background-image: url("images/friso1.png");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 160px;
+      width: 100%;
+      text-align: center;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    }
+    #header-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 160px;
+      object-fit: contain;
+      z-index: 20;
+      margin-left: 10px;
+      background: rgba(0,0,0,0.15);
+    }
+    nav {
+      margin: 0.5em 0 1em 0;
+    }
+    nav a {
+      display: inline-block;
+      margin: 0 1em;
+      padding: 0.45em 1.15em;
+      background: #008000;
+      color: #ff7c00;
+      font-size: 1.15em;
+      font-weight: 800;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      text-shadow: none;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.16);
+      transition: background 0.25s, transform 0.15s;
+    }
+    nav a:hover {
+      background: #006e00;
+      color: #ffa64d;
+      transform: scale(1.08);
+    }
+    .lang-selector {
+      margin-bottom: 0.8em;
+    }
+    .lang-selector button {
+      background: #000000;
+      border: none;
+      border-radius: 6px;
+      margin: 0 0.25em;
+      padding: 0.3em 1em;
+      font-weight: bold;
+      cursor: pointer;
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: background 0.25s, transform 0.15s;
+    }
+    .lang-selector button:hover {
+      background: #222;
+      transform: scale(1.05);
+    }
+    #date-time {
+      position: absolute;
+      top: 8px;
+      right: 20px;
+      color: #fffdf5;
+      font-size: 0.95em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.85);
+      font-weight: 500;
+    }
+    @media (max-width: 900px) {
+      header {
+        height: 130px;
+      }
+      #header-logo {
+        height: 130px;
+      }
+      nav a {
+        font-size: 1em;
+      }
+    }
+    @media (max-width: 700px) {
+      header {
+        height: 110px;
+      }
+      #header-logo {
+        height: 110px;
+      }
+      nav a {
+        display: block;
+        margin: 0.3em;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/logo-nyumba.png" alt="Logótipo Nyumba Food Concept" id="header-logo" />
+    <nav>
+      <a href="index.html" id="nav-home">Principal</a>
+      <a href="galeria.html" id="nav-gallery">Galeria</a>
+      <a href="menu.html" id="nav-menu">Menu</a>
+      <a href="contactos.html" id="nav-contact">Contactos</a>
+    </nav>
+    <div class="lang-selector">
+      <button onclick="setLang('pt')">Português</button>
+      <button onclick="setLang('en')">English</button>
+    </div>
+    <div id="date-time"></div>
+  </header>
